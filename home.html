@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plinco - Home</title>
+    <link rel="stylesheet" href="style_home.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="plinco-logo-small">
+            <img src="plinco_logo.png" alt="Plinco Logo" />
+        </div>
+    </header>
+
+    <main class="homepage-main">
+        <div class="search-section">
+            <!-- Plinco logo above the slogan -->
+            <div class="plinco-logo">
+                <img src="plinco_logo.png" alt="Plinco Logo" />
+            </div>
+            <h2 class="slogan">Find the <span class="highlight">best deals</span> on your <span class="highlight">favorite products</span>.</h2>
+            <div class="homepage-search-bar">
+                <input type="text" id="homepage-search" placeholder="Search for products...">
+                <button id="homepage-search-btn">Search</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plinco. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('homepage-search-btn').addEventListener('click', () => {
+            const query = document.getElementById('homepage-search').value;
+            if (query) {
+                window.location.href = `index.html?search=${encodeURIComponent(query)}`;
+            }
+        });
+
+        document.getElementById('homepage-search').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                const query = document.getElementById('homepage-search').value;
+                if (query) {
+                    window.location.href = `index.html?search=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+
+        document.querySelector('.logo h2').addEventListener('click', () => {
+            window.location.href = 'home.html'; // Redirect to homepage
+        });
+    </script>
+</body>
+</html>

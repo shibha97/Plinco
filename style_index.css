@@ -1,0 +1,219 @@
+/* General reset and body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header styling */
+.main-header {
+    padding: 1rem;
+    background-color: #9533f1;
+    color: white;
+}
+
+.logo-search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add some space between the logo and the search bar */
+}
+
+.plinco-logo-small img {
+    width: 100px; /* Adjust this size as needed */
+    margin-bottom: 0rem;
+}
+
+.search-bar-wrapper {
+    flex-grow: 1;
+    display: flex;
+}
+
+.search-bar-wrapper input {
+    padding: 0.75rem;
+    width: 25%; /* Adjust to fit the available space */
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-bar-wrapper button {
+    padding: 0.75rem 1rem;
+    background-color: #b388ff;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-bar-wrapper button:hover {
+    background-color: black;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    padding: 2rem;
+}
+
+aside {
+    width: 200px;
+    margin-right: 2rem;
+}
+
+.filter {
+    margin-bottom: 1rem;
+}
+
+.filter label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.filter select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#apply-filters {
+    padding: 0.5rem 1rem;
+    background-color: #b388ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#apply-filters:hover {
+    background-color: #9533f1;
+}
+
+main {
+    flex: 1;
+}
+
+/* Product grid layout */
+#products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.product-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius:
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #9533f1;
+    color: white;
+    margin-top: auto;
+}
+
+.add-to-cart-btn {
+    padding: 0.3rem 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+/* Chatbot container */
+.chatbot-container {
+    position: fixed;
+    bottom: 0;
+    right: 5px;
+    width: 250px;
+    z-index: 1000;
+}
+
+/* Chatbot window */
+.chatbot {
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #9533f1;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.chatbot-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.chatbot-messages {
+    flex-grow: 1;
+    margin-bottom: 100px;
+}
+
+.chatbot-input {
+    width: calc(100% - 1px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 0px;
+}
+
+.chatbot-send {
+    padding: 10px 20px;
+    background-color: #9533f1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chatbot-toggle {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}

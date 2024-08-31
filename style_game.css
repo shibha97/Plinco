@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-header {
+    padding: 1rem;
+    background-color: #9533f1;
+    color: white;
+}
+
+.logo-search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.plinco-logo-small img {
+    width: 100px;
+    margin-bottom: 0rem;
+}
+
+/* Navigation links */
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Main container styling */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: black;
+}
+
+.game-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.game-box {
+    width: 200px;
+    height: 200px;
+    background-color: #9533f1;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.game-box h2 {
+    margin-bottom: 10px;
+}
+
+.game-box:hover {
+    background-color: #7b25c7;
+}
+
+.instructions {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: black;
+}
+
+#snake-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+canvas {
+    background-color: #000;
+    border: 5px solid #9533f1;
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.game-buttons button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.game-buttons button:hover {
+    background-color: #7b25c7;
+}
+
+/* Add this to your style_game.css */
+
+#breakout-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    margin-top: auto;
+}

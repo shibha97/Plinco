@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart - Plinco</title>
+    <link rel="stylesheet" href="style_cart.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-search-container">
+            <div class="plinco-logo-small">
+                <img src="plinco_logo.png" alt="Plinco Logo" />
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="game.html">Game</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <section id="cart-section">
+                <h3>Your Shopping Cart</h3>
+                <div id="cart-items"></div>
+                <div id="cart-total"></div>
+                <div class="cart-buttons">
+                    <button id="checkout-btn">Pay</button>
+                    <button id="play-game-btn">Play</button>
+                </div>
+            </section>
+
+            <section id="recommended-section">
+                <h3>Recommended Products</h3>
+                <div id="recommended-products-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Plinco. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Display cart items
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalContainer = document.getElementById('cart-total');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item product-card">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p class="product-price">$${item.price}</p>
+                            <input type="number" value="${item.quantity}" min="1" data-index="${index}" class="cart-item-quantity">
+                            <button class="remove-item-btn" data-index="${index}">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartTotalContainer.innerHTML = `<h3>Total: $${total.toFixed(2)}</h3>`;
+
+            // Add event listeners for quantity changes and removing items
+            document.querySelectorAll('.cart-item-quantity').forEach(input => {
+                input.addEventListener('change', updateQuantity);
+            });
+
+            document.querySelectorAll('.remove-item-btn').forEach(button => {
+                button.addEventListener('click', removeItem);
+            });
+        }
+
+        function updateQuantity(event) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const index = event.target.getAttribute('data-index');
+            cart[index].quantity = parseInt(event.target.value);
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+
+        function removeItem(event) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const index = event.target.getAttribute('data-index');
+            cart.splice(index, 1);
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+
+        // Display recommended products (mock data)
+        function displayRecommendedProducts() {
+            const recommendedProductsGrid = document.getElementById('recommended-products-grid');
+            const recommendedProducts = generateMockProducts('Recommended', 6);
+
+            recommendedProductsGrid.innerHTML = '';
+            recommendedProducts.forEach(product => {
+                recommendedProductsGrid.innerHTML += `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="product-info">
+                            <h4>${product.name}</h4>
+                            <p class="product-price">$${product.price}</p>
+                            <button class="add-to-cart-btn" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Add event listeners to "Add to Cart" buttons
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const id = event.target.getAttribute('data-id');
+                    const name = event.target.getAttribute('data-name');
+                    const price = event.target.getAttribute('data-price');
+                    const image = event.target.getAttribute('data-image');
+                    addToCart({ id, name, price, image });
+                });
+            });
+        }
+
+        // Reuse the addToCart function from index.html
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProduct = cart.find(item => item.id === product.id);
+
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                product.quantity = 1;
+                cart.push(product);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update cart display immediately
+            displayCartItems();
+        }
+
+        // Mock product generation for recommended products
+        function generateMockProducts(query, count) {
+            const mockProducts = [];
+            for (let i = 1; i <= count; i++) {
+                mockProducts.push({
+                    id: `${query}-${i}`,
+                    name: `${query} Product ${i}`,
+                    price: Math.floor(Math.random() * 500) + 50, // Random price between $50 and $550
+                    image: `https://via.placeholder.com/200x200?text=${encodeURIComponent(query)}+Product+${i}`
+                });
+            }
+            return mockProducts;
+        }
+
+        // Initialize the cart page
+        displayCartItems();
+        displayRecommendedProducts();
+
+        // Event listener for the Play Game button
+        document.getElementById('play-game-btn').addEventListener('click', () => {
+            window.location.href = 'game.html'; // Redirect to the game page
+        });
+    </script>
+</body>
+</html>

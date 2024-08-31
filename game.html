@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plinco - Game</title>
+    <link rel="stylesheet" href="style_game.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-search-container">
+            <div class="plinco-logo-small">
+                <img src="plinco_logo.png" alt="Plinco Logo" />
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="cart.html">Shopping Cart</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <h1>Welcome to the Plinco Games!</h1>
+            <div class="game-boxes">
+                <div class="game-box" id="game1" onclick="location.href='snake.html';">
+                    <h2>Snake</h2>
+                </div>
+                <div class="game-box" id="game2" onclick="location.href='breakout.html';">
+                    <h2>Breakout</h2>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Plinco. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function checkCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items to your cart to win discounts & prizes.');
+            }
+        }
+
+        window.onload = checkCart;
+    </script>
+</body>
+</html>
