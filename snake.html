@@ -111,7 +111,7 @@
                 score++;
                 if (score === 10) {
                     clearInterval(game);
-                    alert('Congratulations! You scored 10 points! You discount is ready at checkout.');
+                    alert('Congratulations! You scored 10 points! Your discount is ready at checkout.');
                     localStorage.setItem('discount', '100'); // Store discount in localStorage
                     window.location.href = 'cart.html'; // Redirect to checkout
                     return;
